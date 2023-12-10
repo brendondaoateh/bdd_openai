@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'bdd_openai'
+require 'dotenv/load'
 require 'vcr'
 
 RSpec.configure do |config|
@@ -17,5 +18,7 @@ end
 
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/vcr_cassettes'
-  config.hook_into :webmock # or :faraday, :typhoeus, etc.
+  config.hook_into :webmock
+
+  config.define_cassette_placeholder('<OPENAI_API_KEY>') { ENV['OPENAI_API_KEY'] }
 end

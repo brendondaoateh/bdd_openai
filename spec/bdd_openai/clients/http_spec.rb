@@ -3,7 +3,7 @@
 RSpec.describe BddOpenai::Client::HttpClient do
   describe '#call_get' do
     context 'when successfully call a GET API' do
-      VCR.use_cassette('sample_get_api') do
+      VCR.use_cassette('sample_api_get') do
         client = described_class.new
         uri = URI.parse('https://reqres.in/api/users/2')
         headers = { "Content-Type": 'application/json' }

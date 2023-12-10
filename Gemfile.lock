@@ -12,6 +12,7 @@ GEM
     crack (0.4.5)
       rexml
     diff-lcs (1.5.0)
+    dotenv (2.8.1)
     hashdiff (1.0.1)
     json (2.7.1)
     language_server-protocol (3.17.0.3)
@@ -64,6 +65,7 @@ PLATFORMS
 
 DEPENDENCIES
   bdd_openai!
+  dotenv
   rake (~> 13.0)
   rspec (~> 3.0)
   rubocop (~> 1.21)
