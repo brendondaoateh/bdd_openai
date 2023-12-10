@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
 require 'json'
-require_relative 'bdd_openai/version'
+require 'net/http'
+require_relative 'bdd_openai/clients/http'
 require_relative 'bdd_openai/files/file'
+require_relative 'bdd_openai/version'
