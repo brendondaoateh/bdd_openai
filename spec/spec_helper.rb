@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
+require 'test_coverage_setup'
+
 require 'bdd_openai'
 require 'dotenv/load'
 require 'vcr'
+require 'simplecov'
+
+SimpleCov.start
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
