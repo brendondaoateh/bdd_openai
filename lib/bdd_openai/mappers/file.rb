@@ -3,7 +3,7 @@
 module BddOpenai
   # Module for OpenAI Files API
   # Ref: https://platform.openai.com/docs/api-reference/files
-  module Files
+  module Mapper
     # The File object
     # Ref: https://platform.openai.com/docs/api-reference/files/object
     class File
