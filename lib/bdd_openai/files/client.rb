@@ -6,6 +6,7 @@ module BddOpenai
   module Files
     # Client for OpenAI Files API
     class Client
+      # @param api_key [String] The key of the OpenAI API
       def initialize(api_key = '')
         @http_client = BddOpenai::Client::HttpClient.new
         @openai_api_domain = 'https://api.openai.com/v1'
@@ -19,6 +20,7 @@ module BddOpenai
         }
       end
 
+      # @return [Array<BddOpenai::Files::File>, BddOpenai::ErrorResponse]
       def list_files
         uri = URI.parse("#{@openai_api_domain}/files")
         response = @http_client.call_get(uri, default_headers)
@@ -29,6 +31,9 @@ module BddOpenai
         end
       end
 
+      # @param purpose [String] The intended purpose of the file. One of: "fine-tune", "assistants".
+      # @param file_path [String] The path of the file to upload
+      # @return [BddOpenai::Files::File, BddOpenai::ErrorResponse]
       def upload_file(purpose, file_path)
         uri = URI.parse("#{@openai_api_domain}/files")
         body, boundary = @http_client.create_multipart_body({ purpose: purpose }, { file: file_path })
@@ -42,6 +47,8 @@ module BddOpenai
         BddOpenai::Files::File.from_json(response.body)
       end
 
+      # @param file_id [String] The id of the file to delete
+      # @return [true, BddOpenai::ErrorResponse]
       def delete_file(file_id)
         uri = URI.parse("#{@openai_api_domain}/files/#{file_id}")
         response = @http_client.call_delete(uri, default_headers)
@@ -50,6 +57,8 @@ module BddOpenai
         true
       end
 
+      # @param file_id [String] The id of the file to retrieve
+      # @return [BddOpenai::Files::File, BddOpenai::ErrorResponse]
       def retrieve_file(file_id)
         uri = URI.parse("#{@openai_api_domain}/files/#{file_id}")
         response = @http_client.call_get(uri, default_headers)

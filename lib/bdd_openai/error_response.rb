@@ -12,6 +12,8 @@ module BddOpenai
     # @return [String] error code of openai
     attr_accessor :code
 
+    # @param response_body [String] The full response body of OpenAI API
+    # @return [BddOpenai::ErrorResponse]
     def self.from_json(response_body)
       data = JSON.parse(response_body)['error']
       BddOpenai::ErrorResponse.new(

@@ -1,8 +1,14 @@
 # frozen_string_literal: true
 
 module BddOpenai
+  # Namespace for all external clients
   module Client
+    # An HTTP client
     class HttpClient
+      # @param uri [String]
+      # @param headers [Hash]
+      # @param disable_ssl [Boolean]
+      # @return [Net::HTTPResponse]
       def call_get(uri, headers, disable_ssl: false)
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = disable_ssl ? false : true
@@ -10,6 +16,11 @@ module BddOpenai
         http.request(request)
       end
 
+      # @param uri [String]
+      # @param req_body [String] Request body in the form of JSON string.
+      # @param headers [Hash]
+      # @param disable_ssl [Boolean]
+      # @return [Net::HTTPResponse]
       def call_post(uri, req_body, headers, disable_ssl: false)
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = disable_ssl ? false : true
@@ -18,6 +29,9 @@ module BddOpenai
         http.request(request)
       end
 
+      # @param fields [Hash] The fields to be sent in the request body
+      # @param file_fields [Hash] The file fields to be sent in the request body, with value as the file path.
+      # @return [String, String (frozen)] The request body and the boundary string
       def create_multipart_body(fields, file_fields)
         boundary = "----#{SecureRandom.hex(16)}"
         body = +''
@@ -36,6 +50,10 @@ module BddOpenai
         [body, boundary]
       end
 
+      # @param uri [String]
+      # @param headers [Hash]
+      # @param disable_ssl [Boolean]
+      # @return [Net::HTTPResponse]
       def call_delete(uri, headers, disable_ssl: false)
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = disable_ssl ? false : true

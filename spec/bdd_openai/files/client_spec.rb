@@ -2,6 +2,7 @@
 
 RSpec.describe BddOpenai::Files::Client do
   let(:api_key) { ENV['OPENAI_API_KEY'] }
+  subject(:client) { described_class.new(api_key) }
 
   describe '#list_files' do
     context 'with invalid api key' do
@@ -23,7 +24,6 @@ RSpec.describe BddOpenai::Files::Client do
     context 'with valid api key' do
       it 'returns a files array' do
         VCR.use_cassette('list_files_valid_key') do
-          client = described_class.new(api_key)
           result = client.list_files
           expected_response = [
             {
@@ -56,7 +56,6 @@ RSpec.describe BddOpenai::Files::Client do
     context 'with invalid purpose' do
       it 'returns an error response object' do
         VCR.use_cassette('upload_file_invalid_purpose') do
-          client = described_class.new(api_key)
           purpose = 'invalid_purpose'
           file_path = 'spec/fixtures/sample.pdf'
           result = client.upload_file(purpose, file_path)
@@ -72,7 +71,6 @@ RSpec.describe BddOpenai::Files::Client do
     context 'with valid purpose and file' do
       it 'returns file object of uploaded file' do
         VCR.use_cassette('upload_file_valid') do
-          client = described_class.new(api_key)
           purpose = 'assistants'
           file_path = 'spec/fixtures/sample.pdf'
           result = client.upload_file(purpose, file_path)
@@ -94,7 +92,6 @@ RSpec.describe BddOpenai::Files::Client do
     context 'with invalid file id' do
       it 'returns an error response object' do
         VCR.use_cassette('delete_file_invalid_id') do
-          client = described_class.new(api_key)
           file_id = 'invalid_id'
           result = client.delete_file(file_id)
           expected_response = {
@@ -110,7 +107,6 @@ RSpec.describe BddOpenai::Files::Client do
     context 'with valid file id' do
       it 'returns true' do
         VCR.use_cassette('delete_file_valid') do
-          client = described_class.new(api_key)
           file_id = 'file-Uoz8yzLCgamwaSLTklAT1PPA'
           result = client.delete_file(file_id)
           expect(result).to eq true
@@ -123,7 +119,6 @@ RSpec.describe BddOpenai::Files::Client do
     context 'with invalid file id' do
       it 'returns an error response object' do
         VCR.use_cassette('retrieve_file_invalid_id') do
-          client = described_class.new(api_key)
           file_id = 'invalid_id'
           result = client.retrieve_file(file_id)
           expected_response = {
@@ -139,7 +134,6 @@ RSpec.describe BddOpenai::Files::Client do
     context 'with valid file id' do
       it 'returns true' do
         VCR.use_cassette('retrieve_file_valid') do
-          client = described_class.new(api_key)
           file_id = 'file-DKQD4iZvYfaqQ6Pfx8Yq7CZh'
           result = client.retrieve_file(file_id)
 
