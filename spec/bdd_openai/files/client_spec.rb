@@ -89,4 +89,33 @@ RSpec.describe BddOpenai::Files::Client do
       end
     end
   end
+
+  describe '#delete_file' do
+    context 'with invalid file id' do
+      it 'returns an error response object' do
+        VCR.use_cassette('delete_file_invalid_id') do
+          client = described_class.new(api_key)
+          file_id = 'invalid_id'
+          result = client.delete_file(file_id)
+          expected_response = {
+            "message": "No such File object: #{file_id}",
+            "type": 'invalid_request_error',
+            "param": 'id'
+          }
+          expect(result).to have_attributes(expected_response)
+        end
+      end
+    end
+
+    context 'with valid file id' do
+      it 'returns true' do
+        VCR.use_cassette('delete_file_valid') do
+          client = described_class.new(api_key)
+          file_id = 'file-Uoz8yzLCgamwaSLTklAT1PPA'
+          result = client.delete_file(file_id)
+          expect(result).to eq true
+        end
+      end
+    end
+  end
 end

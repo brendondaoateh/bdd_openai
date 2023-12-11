@@ -35,6 +35,13 @@ module BddOpenai
         body << "--#{boundary}--\r\n"
         [body, boundary]
       end
+
+      def call_delete(uri, headers, disable_ssl: false)
+        http = Net::HTTP.new(uri.host, uri.port)
+        http.use_ssl = disable_ssl ? false : true
+        request = Net::HTTP::Delete.new(uri.path, headers)
+        http.request(request)
+      end
     end
   end
 end

@@ -41,6 +41,14 @@ module BddOpenai
 
         BddOpenai::Files::File.from_json(response.body)
       end
+
+      def delete_file(file_id)
+        uri = URI.parse("#{@openai_api_domain}/files/#{file_id}")
+        response = @http_client.call_delete(uri, default_headers)
+        return BddOpenai::ErrorResponse.from_json(response.body) unless response.code == '200'
+
+        true
+      end
     end
   end
 end

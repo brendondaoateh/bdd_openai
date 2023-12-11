@@ -61,4 +61,23 @@ RSpec.describe BddOpenai::Client::HttpClient do
       end
     end
   end
+
+  describe '#call_delete' do
+    context 'when successfully call a DELETE API' do
+      VCR.use_cassette('sample_api_delete') do
+        client = described_class.new
+        uri = URI.parse('https://reqres.in/api/users/2')
+        headers = { "Content-Type": 'application/json' }
+        response = client.call_delete(uri, headers)
+
+        it 'returns HTTP code 204' do
+          expect(response.code).to eq('204')
+        end
+
+        it 'returns expected response body' do
+          expect(response.body).to be_nil
+        end
+      end
+    end
+  end
 end
