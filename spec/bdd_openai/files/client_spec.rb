@@ -118,4 +118,42 @@ RSpec.describe BddOpenai::Files::Client do
       end
     end
   end
+
+  describe '#retrieve_file' do
+    context 'with invalid file id' do
+      it 'returns an error response object' do
+        VCR.use_cassette('retrieve_file_invalid_id') do
+          client = described_class.new(api_key)
+          file_id = 'invalid_id'
+          result = client.retrieve_file(file_id)
+          expected_response = {
+            "message": "No such File object: #{file_id}",
+            "type": 'invalid_request_error',
+            "param": 'id'
+          }
+          expect(result).to have_attributes(expected_response)
+        end
+      end
+    end
+
+    context 'with valid file id' do
+      it 'returns true' do
+        VCR.use_cassette('retrieve_file_valid') do
+          client = described_class.new(api_key)
+          file_id = 'file-DKQD4iZvYfaqQ6Pfx8Yq7CZh'
+          result = client.retrieve_file(file_id)
+
+          expected_response = {
+            object: 'file',
+            id: 'file-DKQD4iZvYfaqQ6Pfx8Yq7CZh',
+            purpose: 'assistants',
+            filename: 'sample.pdf',
+            bytes: 2830,
+            created_at: 1_702_269_196
+          }
+          expect(result).to have_attributes(expected_response)
+        end
+      end
+    end
+  end
 end

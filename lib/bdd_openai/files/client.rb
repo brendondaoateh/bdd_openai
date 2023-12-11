@@ -49,6 +49,14 @@ module BddOpenai
 
         true
       end
+
+      def retrieve_file(file_id)
+        uri = URI.parse("#{@openai_api_domain}/files/#{file_id}")
+        response = @http_client.call_get(uri, default_headers)
+        return BddOpenai::ErrorResponse.from_json(response.body) unless response.code == '200'
+
+        BddOpenai::Files::File.from_json(response.body)
+      end
     end
   end
 end
