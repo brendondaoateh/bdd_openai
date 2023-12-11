@@ -28,6 +28,19 @@ module BddOpenai
           BddOpenai::Files::File.from_json(file.to_json)
         end
       end
+
+      def upload_file(purpose, file_path)
+        uri = URI.parse("#{@openai_api_domain}/files")
+        body, boundary = @http_client.create_multipart_body({ purpose: purpose }, { file: file_path })
+        headers = default_headers
+                  .merge({
+                           "Content-Type": "multipart/form-data; boundary=#{boundary}"
+                         })
+        response = @http_client.call_post(uri, body, headers)
+        return BddOpenai::ErrorResponse.from_json(response.body) unless response.code == '200'
+
+        BddOpenai::Files::File.from_json(response.body)
+      end
     end
   end
 end

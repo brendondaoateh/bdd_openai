@@ -19,6 +19,6 @@ end
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/vcr_cassettes'
   config.hook_into :webmock
-
+  config.preserve_exact_body_bytes { true }
   config.define_cassette_placeholder('<OPENAI_API_KEY>') { ENV['OPENAI_API_KEY'] }
 end

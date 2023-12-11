@@ -23,7 +23,7 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Sun, 10 Dec 2023 21:47:47 GMT
+      - Mon, 11 Dec 2023 03:09:38 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -37,23 +37,23 @@ http_interactions:
       Openai-Version:
       - '2020-10-01'
       X-Request-Id:
-      - 59087c57c9bc59b379cb5b25bd026c6a
+      - b1b8deb0cca1a651f6adc36bc08af91c
       Openai-Processing-Ms:
-      - '27'
+      - '19'
       Strict-Transport-Security:
       - max-age=15724800; includeSubDomains
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=VWfl30sPCrha19CKsUYRr.zv7qQw0H9bNUHlGYV3eaQ-1702244867-1-AW4RmZKBQCYHqFOLDENuuco9urR7L6CzKti4SP9nrOJreB4URY/8vT1rE/HW+vdygbeKdtYC8ObiJxb58DesIzw=;
-        path=/; expires=Sun, 10-Dec-23 22:17:47 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=klrTCM4UAmVWXBqn.ChhpMGL.M00dv0mh0U3v84QuPw-1702264178-0-AXPP0YyUvkxJ3mDsAQzrV5K/+SgwEGfQWmpGA0kmfBHu8N/yzkI8FOieUrF950DkypkjM4t7jTQFhFBEzHzTAJ8=;
+        path=/; expires=Mon, 11-Dec-23 03:39:38 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=S4HbfJnBIyS5qAvutZWIF_b6NBN_uIHdTR8Jb37PJzk-1702244867472-0-604800000;
+      - _cfuvid=eWIAcd4xF0YNp0FL0fx42sGenODqX8iY7kSwQtdTiqA-1702264178372-0-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Server:
       - cloudflare
       Cf-Ray:
-      - 8338b0344dfa6e49-HKG
+      - 833a87a97cd01248-HKG
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -67,5 +67,5 @@ http_interactions:
             "code": "invalid_api_key"
           }
         }
-  recorded_at: Sun, 10 Dec 2023 21:47:47 GMT
+  recorded_at: Mon, 11 Dec 2023 03:09:38 GMT
 recorded_with: VCR 6.2.0
