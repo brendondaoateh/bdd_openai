@@ -1,6 +1,6 @@
 # BddOpenai
 
-This gem is a personal exercise to get familiar with Ruby and Gem creating. gem Gem include only one top level namespace of TestOpenai which you can find all you need inside. Starting by creating an instance of BddOpenai::Files::Client.
+This gem is a personal exercise to get familiar with Ruby and Gem creating. gem Gem include only one top level namespace of TestOpenai which you can find all you need inside. Starting by creating an instance of BddOpenai::FileClient.
 
 For this exercise, the client will provide wrapper to some of OpenAI File APIs. API doc can bbe found here:
 - https://platform.openai.com/docs/api-reference/files
@@ -31,7 +31,7 @@ You can direct interact with gem by:
 ```ruby
 require "bdd_openai"
 
-client = BddOpenai::Files::Client.new(ENV["OPENAI_API_KEY"])
+client = BddOpenai::FileClient.new(ENV["OPENAI_API_KEY"])
 
 client.list_files
 

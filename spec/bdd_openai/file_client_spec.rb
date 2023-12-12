@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe BddOpenai::Files::Client do
+RSpec.describe(BddOpenai::FileClient) do
   let(:api_key) { ENV['OPENAI_API_KEY'] }
   subject(:client) { described_class.new(api_key) }
 
