@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.openai.com/v1/files/invalid_id
+    body:
+      encoding: US-ASCII
+      base64_string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENAI_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Mon, 11 Dec 2023 05:43:39 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Openai-Version:
+      - '2020-10-01'
+      Openai-Organization:
+      - user-9qbv6uumhc6fa5oofgv09oc1
+      X-Request-Id:
+      - 9697538b0ee20ff7cef438210c82db7a
+      Openai-Processing-Ms:
+      - '7197'
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=ClCcHZ0hA3nhfZ1oCjVb4ll.L.GgSRWe9F6Q_TvKWlY-1702273419-0-Aeh3mp3EeZOtNqATGx19SppzCfXXJToKaR5Qql8mDjH97OnSOpciA7MqxHTSxK3bicegPQMzEo918Map1C5RTrE=;
+        path=/; expires=Mon, 11-Dec-23 06:13:39 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=Z0OOKxB9oWH5WC54efHjLBgBQ2OOF3dE3hmjUJEXf_E-1702273419422-0-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 833b69192a4f24d3-HKG
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      base64_string: |
+        ewogICJlcnJvciI6IHsKICAgICJtZXNzYWdlIjogIk5vIHN1Y2ggRmlsZSBv
+        YmplY3Q6IGludmFsaWRfaWQiLAogICAgInR5cGUiOiAiaW52YWxpZF9yZXF1
+        ZXN0X2Vycm9yIiwKICAgICJwYXJhbSI6ICJpZCIsCiAgICAiY29kZSI6IG51
+        bGwKICB9Cn0K
+  recorded_at: Mon, 11 Dec 2023 05:43:39 GMT
+recorded_with: VCR 6.2.0
