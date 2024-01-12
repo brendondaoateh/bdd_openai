@@ -72,6 +72,7 @@ PLATFORMS
 
 DEPENDENCIES
   bdd_openai!
+  bundler (= 2.4.22)
   dotenv
   rake (~> 13.0)
   rspec (~> 3.0)
@@ -81,4 +82,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   2.4.17
+   2.4.22

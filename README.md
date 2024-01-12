@@ -24,8 +24,6 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-Visit `spec/bdd_openai/files/client_spec.rb` for full sample code. Or:
-
 You can direct interact with gem by:
 
 ```ruby
